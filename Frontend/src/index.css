@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #1d4ed8;        /* main blue: buttons, navbar */
+  --color-primary-dark: #1e3a8a;   /* darker blue: hover states */
+  --color-primary-light: #dbeafe;  /* pale blue: backgrounds, highlights */
+}
