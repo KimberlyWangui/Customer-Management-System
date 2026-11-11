@@ -7,6 +7,8 @@ import Register from './pages/Register'
 import NotFound from './pages/NotFound'
 import CustomerDashboard from './pages/customer/CustomerDashboard'
 import AdminDashboard from './pages/admin/AdminDashboard'
+import AdminLayout from './layouts/AdminLayout'
+import CustomersList from './pages/admin/CustomersList'
 
 function App() {
   return (
@@ -23,7 +25,10 @@ function App() {
 
       {/* Admin only */}
       <Route element={<ProtectedRoute role="admin" />}>
-        <Route path="/admin" element={<AdminDashboard />} />
+        <Route element={<AdminLayout />}>
+          <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/admin/customers" element={<CustomersList />} />
+        </Route>
       </Route>
 
       {/* Anything else */}
