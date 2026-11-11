@@ -1,26 +1,34 @@
+import { Routes, Route } from 'react-router'
+import ProtectedRoute from './components/ProtectedRoute'
+
+import Landing from './pages/Landing'
+import Login from './pages/Login'
+import Register from './pages/Register'
+import NotFound from './pages/NotFound'
+import CustomerDashboard from './pages/customer/CustomerDashboard'
+import AdminDashboard from './pages/admin/AdminDashboard'
+
 function App() {
   return (
-    <div className="min-h-screen bg-white">
-      <nav className="bg-primary text-white px-4 py-3">
-        <h1 className="text-xl font-bold">MtejaHub</h1>
-      </nav>
+    <Routes>
+      {/* Public pages */}
+      <Route path="/" element={<Landing />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
 
-      <main className="p-4 md:p-8">
-        <h2 className="text-2xl md:text-4xl font-bold text-primary-dark">
-          Tailwind is working
-        </h2>
+      {/* Customer only */}
+      <Route element={<ProtectedRoute role="customer" />}>
+        <Route path="/dashboard" element={<CustomerDashboard />} />
+      </Route>
 
-        <div className="mt-6 flex flex-col md:flex-row gap-4">
-          <div className="flex-1 bg-primary-light rounded-lg p-4">Box 1</div>
-          <div className="flex-1 bg-primary-light rounded-lg p-4">Box 2</div>
-          <div className="flex-1 bg-primary-light rounded-lg p-4">Box 3</div>
-        </div>
+      {/* Admin only */}
+      <Route element={<ProtectedRoute role="admin" />}>
+        <Route path="/admin" element={<AdminDashboard />} />
+      </Route>
 
-        <button className="mt-6 w-full md:w-auto bg-primary hover:bg-primary-dark text-white px-6 py-2 rounded-lg">
-          Test button
-        </button>
-      </main>
-    </div>
+      {/* Anything else */}
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   )
 }
 
