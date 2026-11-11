@@ -1,7 +1,6 @@
-import { Routes, Route } from 'react-router'
+import { Routes, Route, Navigate} from 'react-router'
 import ProtectedRoute from './components/ProtectedRoute'
 
-import Landing from './pages/Landing'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import NotFound from './pages/NotFound'
@@ -29,7 +28,7 @@ function App() {
   return (
     <Routes>
       {/* Public pages */}
-      <Route path="/" element={<Landing />} />
+      <Route path="/" element={<Navigate to="/login" replace />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
 
