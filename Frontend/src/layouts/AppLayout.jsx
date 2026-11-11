@@ -3,12 +3,7 @@ import { Link, NavLink, Outlet } from 'react-router'
 import { LogOut, Menu, X } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
 
-const links = [
-  { to: '/admin', label: 'Dashboard', end: true },
-  { to: '/admin/customers', label: 'Customers' },
-]
-
-export default function AdminLayout() {
+export default function AppLayout({ links, homeTo }) {
   const { user, logout } = useAuth()
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -21,7 +16,7 @@ export default function AdminLayout() {
     <div className="min-h-screen bg-gray-50">
       <nav className="bg-primary">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-          <Link to="/admin" className="text-xl font-bold text-white">MtejaHub</Link>
+          <Link to={homeTo} className="text-xl font-bold text-white">MtejaHub</Link>
 
           {/* Desktop links */}
           <div className="hidden md:flex items-center gap-2">

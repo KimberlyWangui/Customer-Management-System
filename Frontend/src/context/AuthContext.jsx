@@ -48,8 +48,18 @@ export function AuthProvider({ children }) {
     }
   }
 
+  const refreshUser = async () => {
+    const res = await api.get('/me')
+    setUser(res.data)
+  }
+
+  const clearSession = () => {
+    localStorage.removeItem('token')
+    setUser(null)
+  }
+
   return (
-    <AuthContext.Provider value={{ user, loading, login, register, logout }}>
+    <AuthContext.Provider value={{ user, loading, login, register, logout, refreshUser, clearSession }}>
       {children}
     </AuthContext.Provider>
   )

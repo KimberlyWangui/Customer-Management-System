@@ -1,11 +1,12 @@
 import { useState } from 'react'
-import { Link, Navigate } from 'react-router'
+import { Link, Navigate, useLocation} from 'react-router'
 import { useAuth } from '../context/AuthContext'
 import FormInput from '../components/FormInput'
 import formatErrors from '../utils/formatErrors'
 
 export default function Login() {
   const { user, login } = useAuth()
+  const location = useLocation()
 
   const [form, setForm] = useState({ email: '', password: '' })
   const [errors, setErrors] = useState({})
@@ -56,6 +57,12 @@ export default function Login() {
           MtejaHub
         </Link>
         <h1 className="mt-2 text-center text-gray-600">Log in to your account</h1>
+
+        {location.state?.message && (
+          <div className="mt-4 rounded-lg bg-green-50 p-3 text-sm text-green-700">
+            {location.state.message}
+          </div>
+        )}
 
         {errors.general && (
           <div className="mt-4 rounded-lg bg-red-50 p-3 text-sm text-red-700">{errors.general}</div>
