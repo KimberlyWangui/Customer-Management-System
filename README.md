@@ -98,7 +98,7 @@ Customer-Management-System/
 ### 1. Clone the repository
 
 ```bash
-git clone <your-repo-url>
+git clone git@github.com:KimberlyWangui/Customer-Management-System.git
 cd Customer-Management-System
 ```
 
