@@ -5,3 +5,7 @@
   --color-primary-dark: #1e3a8a;   /* darker blue: hover states */
   --color-primary-light: #dbeafe;  /* pale blue: backgrounds, highlights */
 }
+input::-ms-reveal,
+input::-ms-clear {
+  display: none;
+}
