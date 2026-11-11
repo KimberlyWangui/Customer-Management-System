@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useState } from 'react'
-import { Link } from 'react-router'
+import { Link, useLocation } from 'react-router'
 import { Eye, Pencil, Plus, Search, Trash2 } from 'lucide-react'
 import api from '../../api/axios'
 import ConfirmModal from '../../components/ConfirmModal'
 
 export default function CustomersList() {
+  const location = useLocation()
   const [customers, setCustomers] = useState([])
   const [meta, setMeta] = useState({ current_page: 1, last_page: 1, total: 0 })
   const [search, setSearch] = useState('')
@@ -12,7 +13,7 @@ export default function CustomersList() {
   const [page, setPage] = useState(1)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
-  const [message, setMessage] = useState('')
+  const [message, setMessage] = useState(location.state?.message || '')
   const [toDelete, setToDelete] = useState(null)
   const [deleting, setDeleting] = useState(false)
 

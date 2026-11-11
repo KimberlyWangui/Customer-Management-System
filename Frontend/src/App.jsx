@@ -9,6 +9,9 @@ import CustomerDashboard from './pages/customer/CustomerDashboard'
 import AdminDashboard from './pages/admin/AdminDashboard'
 import AdminLayout from './layouts/AdminLayout'
 import CustomersList from './pages/admin/CustomersList'
+import AddCustomer from './pages/admin/AddCustomer'
+import CustomerDetails from './pages/admin/CustomerDetails'
+import EditCustomer from './pages/admin/EditCustomer'
 
 function App() {
   return (
@@ -28,6 +31,9 @@ function App() {
         <Route element={<AdminLayout />}>
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/admin/customers" element={<CustomersList />} />
+          <Route path="/admin/customers/new" element={<AddCustomer />} />
+          <Route path="/admin/customers/:id" element={<CustomerDetails />} />
+          <Route path="/admin/customers/:id/edit" element={<EditCustomer />} />
         </Route>
       </Route>
 
